@@ -30,6 +30,7 @@ sudo docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
  * Docker
  * Docker Pipeline
  * Eclipse Temurin installer
+ * Pipeline: Stage View
 
 - Create Token in sonarqube and save it.
 - Configure Plugins in Tools Section
