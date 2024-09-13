@@ -6,3 +6,12 @@
 sudo apt install docker.io -y
 sudo chmod 666 /var/run/docker.sock
 ```
+
+- Nexus Installation
+```
+sudo docker run -d -p 8081:8081 --name nexus sonatype/nexus3
+```
+- SonarQube Installation
+```
+sudo docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
+```
