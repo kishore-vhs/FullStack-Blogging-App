@@ -18,7 +18,7 @@ cat sonatype-work/nexus3/admin.password
 ```
 sudo docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
 ```
-- Jenkins Plugins
+### Jenkins Plugins
  * sonarqube scanner
  * config File provider
  * Maven Integration
