@@ -19,6 +19,9 @@ cat sonatype-work/nexus3/admin.password
 ```
 sudo docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
 ```
+- Login to SonaType Nexus Repository
+    * To Publish same artifact multiple time follow below steps.
+    * Click on Settings -> Repositories -> SnapShots -> Search for Deployment Policy  -> Select Allow Redeploy
 ### Jenkins Plugins
  * sonarqube scanner
  * config File provider
@@ -42,8 +45,9 @@ sudo docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
 
 
 - Credentials
-    * sonar-token Kind Secret text
+    * sonar-token Kind Secret Text
     * git-cred Kind Username and Password
+    * docker-cred Kind Secret Text
 
 - Configure Maven-file
     * Manage Jenkins -> Managed files -> Add a new Config -> Scroll down and provide name as maven-settings -> next
