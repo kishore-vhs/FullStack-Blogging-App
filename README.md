@@ -2,6 +2,7 @@
 ### Application Code Created by Code With GoldenCat Youtube Channel.
 - Create two(SonarQube and Nexus) virtual machines with Ubuntu24:04 t2.medium(4GiB 2CPU) 20GB Volume.
 - Create Jenkins Machine with Ubuntu24:04 with t2.large with 25GB.(Install jdk-17 and Jenkins, Docker)
+- Install Trivy where every Jenkins is running
 ```
 sudo apt install docker.io -y
 sudo chmod 666 /var/run/docker.sock
@@ -38,3 +39,27 @@ sudo docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
     * Maven (maven3)
     * SonarQube (sonar-scanner)
     * JDK (jdk17 install from adoptium.net jdk-17.1.11+9)
+
+
+- Credentials
+    * sonar-token Kind Secret text
+    * git-cred Kind Username and Password
+
+- Configure Maven-file
+    * Manage Jenkins -> Managed files -> Add a new Config -> Scroll down and provide name as maven-settings -> next
+    * Scroll to line 113 change as bellow
+    ```
+    <server>
+        <id>maven-releases</id>
+        <username>admin</username>
+        <!-- nexus Password -->
+        <password>Kish@172988</password>
+    </server>
+        <server>
+        <id>maven-snapshots</id>
+        <username>admin</username>
+        <!-- nexus Password -->
+        <password>Kish@172988</password>
+    </server>
+    ```
+    * Click on Save

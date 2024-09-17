@@ -8,11 +8,11 @@
 		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>twitter-app</artifactId>
+	<groupId>xyz.thehsk</groupId>
+	<artifactId>blogging-app</artifactId>
 	<version>0.0.3</version>
-	<name>twitter-app</name>
-	<description>Demo project for Spring Boot</description>
+	<name>blogging-app</name>
+	<description>Spring Boot App</description>
 	<url/>
 	<licenses> 
 		<license/>
@@ -98,4 +98,15 @@
 			</plugin>
 		</plugins>
 	</build>
+	<!-- nexus ip address -->
+	<distributionManagement>
+		<repository>
+			<id>maven-releases</id>
+			<url>http://10.1.1.1:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>maven-snapshots</id>
+			<url>http:10.1.1.1:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
