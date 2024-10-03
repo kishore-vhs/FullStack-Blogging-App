@@ -66,4 +66,3 @@ sudo docker run -d -p 9000:9000 --name sonarqube sonarqube:lts-community
         <password>Kish@172988</password>
     </server>
     ```
-    * Click on Save
