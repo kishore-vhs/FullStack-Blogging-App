@@ -34,5 +34,28 @@ pipeline {
                 sh 'trivy fs --format table -o fs.html .'
             }
         }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonar-server') {
+                    sh '''
+                    $SCANNER_HOME=/bin/sonar-scanner -Dsonar.project=Blogging -Dsonar.projectKey=Blogging \
+                    -Dsonar.java.binaries=target
+                    '''
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+
+        stage('Publish Artifacts') {
+            steps {
+                withMaven(globalMavenSettingsConfig: 'maven-settings', jdk: 'jdk17', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
+                    sh 'mvn deploy'
+                }
+            }
+        }
     }
 }
