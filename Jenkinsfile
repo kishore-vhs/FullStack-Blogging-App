@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'git-cred', url: 'https://github.com/kishore-vhs/blogging/'
+                git branch: 'main', credentialsId: 'git-cred', url: 'https://github.com/kishore-vhs/FullStack-Blogging-App.git'
             }
         }
 
