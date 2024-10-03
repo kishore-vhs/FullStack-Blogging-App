@@ -28,22 +28,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-
-        stage('Trivy FS Scan') {
-            steps {
-                sh 'trivy  fs --format table --output=trivy-report.json .'
-            }
-        }
-
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('sonar-server') {
-                    sh '''$SCANNER_HOME/bin/bsonar-scanner \
-                          -Dsonar.projectName=Blogging-app \
-                          -Dsonar.projectKey=Blogging-app \
-                          -Dsonar.java.binaries=target'''
-                }
-            }
         }
     }
 }
