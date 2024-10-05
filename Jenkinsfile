@@ -38,7 +38,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonar') {
                     sh '''
-                    $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Blogging -Dsonar.projectKey=Blogging \
+                    $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Blogging-app -Dsonar.projectKey=Blogging-app \
                     -Dsonar.java.binaries=target
                     '''
                 }
@@ -50,12 +50,12 @@ pipeline {
             }
         }
 
-        stage('Publish Artifacts') {
-            steps {
-                withMaven(globalMavenSettingsConfig: 'maven-settings', jdk: 'jdk17', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
-                    sh 'mvn deploy'
-                }
-            }
-        }
+        // stage('Publish Artifacts') {
+        //     steps {
+        //         withMaven(globalMavenSettingsConfig: 'maven-settings', jdk: 'jdk17', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
+        //             sh 'mvn deploy'
+        //         }
+        //     }
+        // }
     }
 }
