@@ -69,7 +69,6 @@ pipeline {
         // }
         stage('Build and Tag Docker Image') {
             steps {
-
                 sh 'docker build -t hemasivakishore/blogging-app:latest .'
             }
         }
@@ -90,5 +89,4 @@ pipeline {
                 }
             }
         }
-}
 }
