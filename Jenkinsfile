@@ -82,7 +82,7 @@ pipeline {
         stage('Docker Push Image') {
             steps {
                 script {
-                    withDockerRegistry(toolName: 'docker') {
+                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker', url: 'docker login -u hemasivakishore') {
                         sh 'docker push hemasivakishore/blogging-app:latest'
                     }
                 }
