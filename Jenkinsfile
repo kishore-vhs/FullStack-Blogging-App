@@ -6,9 +6,9 @@ pipeline {
         maven 'maven3'
     }
 
-    // environment {
-    //     SCANNER_HOME = tool 'sonar-scanner'
-    // }
+    environment {
+        SCANNER_HOME = tool 'sonar-scanner'
+    }
 
     stages {
         stage('Git Checkout') {
@@ -34,21 +34,21 @@ pipeline {
                 sh 'trivy fs --format table -o fs.html .'
             }
         }
-        // stage('SonarQube Analysis') {
-        //     steps {
-        //         withSonarQubeEnv('sonar') {
-        //             sh '''
-        //             $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Blogging-app -Dsonar.projectKey=Blogging-app \
-        //             -Dsonar.java.binaries=target
-        //             '''
-        //         }
-        //     }
-        // }
-        // stage('Build') {
-        //     steps {
-        //         sh 'mvn package'
-        //     }
-        // }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonar-server') {
+                    sh '''
+                    $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Blogging-app -Dsonar.projectKey=Blogging-app \
+                    -Dsonar.java.binaries=target
+                    '''
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
 
         // stage('Publish Artifacts') {
         //     steps {
