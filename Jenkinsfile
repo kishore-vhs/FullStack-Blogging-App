@@ -59,9 +59,11 @@ pipeline {
         }
 
         stage('Build and Tag Docker Image') {
-            script {
-                withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                    sh 'docker build -t hemasivakishore/blogging-app:latest .'
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                        sh 'docker build -t hemasivakishore/blogging-app:latest .'
+                    }
                 }
             }
         }
@@ -69,6 +71,16 @@ pipeline {
         stage('Trivy Image Scan') {
             steps {
                 sh 'trivy image --format table -o image.html hemasivakishore/blogging-app:latest'
+            }
+        }
+
+        stage('Docker Push Image') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                        sh 'docker push hemasivakishore/blogging-app:latest'
+                    }
+                }
             }
         }
     }
