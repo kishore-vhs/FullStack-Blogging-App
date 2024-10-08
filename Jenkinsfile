@@ -72,7 +72,6 @@ pipeline {
                 sh 'docker build -t hemasivakishore/blogging-app:latest .'
             }
         }
-    }
 
         stage('Trivy Image Scan') {
             steps {
@@ -89,4 +88,5 @@ pipeline {
                 }
             }
         }
+    }
 }
