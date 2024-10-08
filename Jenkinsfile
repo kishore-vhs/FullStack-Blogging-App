@@ -79,14 +79,14 @@ pipeline {
             }
         }
 
-        stage('Docker Push Image') {
-            steps {
-                script {
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh 'docker push hemasivakishore/blogging-app:latest'
-                    }
-                }
-            }
-        }
+        // stage('Docker Push Image') {
+        //     steps {
+        //         script {
+        //             withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+        //                 sh 'docker push hemasivakishore/blogging-app:latest'
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
