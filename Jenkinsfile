@@ -69,7 +69,7 @@ pipeline {
         // }
         stage('Build and Tag Docker Image') {
             steps {
-                sh 'docker build -t hemasivakishore/blogging-app:latest .'
+                sh 'docker build -t hemasivakishore/blogging-app:v1 .'
             }
         }
 
@@ -83,7 +83,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker', url: 'docker login -u hemasivakishore') {
-                        sh 'docker push hemasivakishore/blogging-app:latest'
+                        sh 'docker push hemasivakishore/blogging-app:v1'
                     }
                 }
             }
